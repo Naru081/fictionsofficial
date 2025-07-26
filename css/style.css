@@ -1,0 +1,844 @@
+@charset "UTF-8";/*コードの文字化けを防ぐ*/
+
+
+/*共通部分
+===============================*/
+html {
+    font-size: 100%;
+}
+body {
+    font-family: "Shippori Mincho", serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #343A40;
+    color: #fff;
+    overflow-x: hidden;
+}
+p{
+    margin: 2rem 0;
+    margin-top: 0;
+    margin-left: 1rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
+img {
+    max-width: 100%;
+}
+video{
+    width: 100%;
+}
+/*見出し*/
+.font-english{
+    font-family: "Konkhmer Sleokchher", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+.heading-large{
+    margin: 1.5rem 0;
+    margin-top: 4rem;
+    margin-left: 1rem;
+}
+header{
+    display: none;/*モバイルでは非表示*/
+}
+/* フッダー調整 */
+.f-menu{
+    font-family: "Konkhmer Sleokchher", system-ui;
+    font-weight: 100;
+    font-style: normal;
+    text-align: center;
+    margin: 5%;
+}
+.f-menu a{
+    font-size: 80%;
+    padding: 0 1rem;
+    transition: 0.3s;
+}
+.f-menu a:hover{
+    border-bottom: #fff 2px solid;
+}
+footer{
+    color: #6C757D;
+    text-align: center;
+    border-top: #6C757D 1px solid;
+}
+small{
+    display: block;
+    justify-content: center;
+    font-size: 40%;
+    margin: 1rem;
+}
+/*見出しのスタイル*/
+.cover-about{
+    margin: 4rem auto;
+    text-align: center;
+    border-bottom:#6C757D 1px solid;
+}
+.cover-about h2{
+    display: inline-block;
+    background-color: #696969;
+    margin: 0;
+    margin-bottom: 2rem;
+    line-height: 1;
+    text-align: center;
+}
+.cover-about p{
+    text-align: left;
+}
+#text-back span{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 1rem;
+}
+/* メニューのスタイル */
+.menu {
+    position: fixed;
+    top: 0;
+    right: -100vw; /* 初期状態では画面の外に隠れている */
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    color: #333;
+    transition: right 0.3s ease; /* スライドインのアニメーション */
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 10;
+  }
+  .hamburger.rounded {
+    background-color: #6C757D;
+    border-radius: 50%;
+    width: 50px; 
+    height: 50px;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+.hamburger.active {/* バツ印 */
+    background-color: transparent; /* 背景色を透明にする */
+}
+  /* メニューが開いているとき */
+  .menu.open {
+    right: 0;
+  }
+  /* ボタンのスタイル */
+  .hamburger {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    cursor: pointer;
+    z-index: 20;
+  }
+  .hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: 0.4s;
+  }
+  /* バツ印に変化するスタイル */
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+    background-color: #333;
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+    background-color: #333;
+  }
+  /* メニューリストのスタイル */
+  .menu ul {
+    font-family: "Konkhmer Sleokchher", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    list-style-type: none;
+    padding: 0;
+    margin-top: 0;
+  }
+  .menu-list li {
+    padding: 20px 0;
+    border-bottom: #6C757D 2px solid;
+  }
+  .menu-list li a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    transition: color 0.3s;
+}
+li.li-bottom{
+    text-align: center;
+    border-bottom: none;
+}
+.menu-list li a:hover{
+    color: #6595BA;
+}
+/* SNSのリンクボタン */
+.link-list{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .5rem;
+    margin: 0 4rem;
+}
+.link-list li{
+    text-align: center;
+}
+.fa-brands{
+    color: #333;
+    font-size: 3.5rem;
+}
+
+/* 紹介ページの設定 */
+.cover-about{
+    margin-bottom: 0;
+}
+.cover-about p{
+    margin: 8rem auto;
+    margin-left: 2rem;
+}
+div#text-back{
+    margin: 3.5rem auto;
+}
+/* 紹介ページの背景 */
+.back {
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+/*紹介コンテンツ*/
+.box{
+    margin: 2rem 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    background-color: #00123379;
+    padding: 1.5rem;
+}
+.texts{
+    margin-left: 2rem;
+    font-size: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.texts p{
+    text-align: left;
+    margin:0;
+    font-size: 90%;
+    white-space: normal;
+}
+.texts br{
+    display: none;
+}
+.texts h2{
+    font-weight: 300;
+    font-size: 120%;
+    display: inline-block;
+    background-color: #6C757D;
+    margin: 0 auto;
+}
+.prof-links {
+    display: flex;
+    gap: 1.5rem;
+}
+.texts a {
+    padding: 0;
+    font-weight: 300;
+}
+
+/*TOP
+===========================*/
+.cover-home {
+    position: relative; /* 親要素を基準にする */
+    width: 100%;
+    height: 100vh; /* 画面全体をカバー */
+    overflow: hidden; /* 必要に応じてはみ出しを隠す */
+}
+
+/*ロゴ*/
+img.logo{
+    padding: 2rem;
+}
+
+/*動画*/
+.video-wrap video {
+    position: relative; /* 動画を絶対配置 */
+    top: 50%;
+    min-width: 100%;
+    height: 100vh;
+    object-fit: cover; /* アスペクト比を維持しつつ親要素をカバー */
+    z-index: 0; /* 背景として配置 */
+    overflow: hidden;
+}
+
+/* サイトの名前 */
+.cover-home h2 {
+    position: absolute; /* 絶対配置 */
+    top: 50%; /* 縦方向の中央揃え */
+    left: 50%; /* 横方向の中央揃え */
+    transform: translate(-50%, -50%); /* 完全に中央に配置 */
+    z-index: 1; /* 動画の上に配置 */
+    color: #fff; /* 文字色を白に設定 */
+    text-align: center; /* 中央揃え */
+    font-size: 3rem; /* 必要に応じてサイズ調整 */
+    margin: 0; /* 余白をリセット */
+    line-height: 1.2; /* 行間を調整 */
+    background-color: #696969;
+}
+.cover-home h2:nth-child(2) {
+    margin: 0; /* 2つ目の見出しに余白を追加 */
+    margin-top: 2rem;
+}
+.cover-home h2.top-sub{
+    font-size: 1.5rem;
+    margin-left: 1.7rem;
+    top: 52%;
+}
+
+/* NEWS */
+.news-list{
+    list-style: none;
+    margin: auto 2rem;
+}
+.news-item{
+    margin: 2rem auto;
+}
+.news-list li{
+    font-size: 1rem;
+}
+p.day{
+    margin: 0;
+    font-family: "Konkhmer Sleokchher", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    color: #6C757D;
+}
+
+/* ABOUT */
+img.logo {
+    width: 100%;
+    max-width: 300px;
+    margin: 2rem auto;
+    display: block;
+}
+.about p {
+    margin: 2rem 0;
+    margin-left: auto;
+    margin-right: 0.8rem;
+    font-size: 0.8rem;
+    text-align: left;
+}
+.top1 p{
+    width: 17rem;
+}
+.top2 p{
+    width: 15rem;
+}
+.top3 p{
+    width: 17rem;
+    margin: 2rem 20%;
+    margin-bottom: 8rem;
+    margin-left: 2rem;
+}
+/* トップ画像 */
+img.about1{
+    margin-left: 0.8rem;
+    width: 70%;
+}
+img.about2{
+    display: block;
+    margin-left: auto;
+    margin-right: 0.8rem;
+    max-width: 50%;
+}
+img.about3{
+    display: block;
+    margin: 0 auto;
+    max-width: 70%;
+}
+
+/* Music
+move.cssにて記載 */
+
+/* Member */
+.member{
+    display: flex;
+    background-color: #dee2e6;
+    margin: 2rem 0;
+    margin-bottom: 8rem;
+    color: #000;
+    flex-direction: column;
+}
+.member h2{
+    margin: 0;
+    padding: 1rem;
+    text-align: left;
+    font-size: 1.5rem;
+}
+.member p{
+    margin: 0;
+    padding: 1rem;
+    text-align: left;
+    font-size: 0.8rem;
+}
+.members{
+    display: flex;
+    margin: 2rem 0;
+    justify-content: center;
+}
+/* 田口 */
+.taguchi{
+    width: 45%;
+    height: auto;
+    max-width: 90%;
+    margin: 0;
+    position: relative;
+    cursor: pointer;
+}
+img.member-taguchi{
+    width: 100%; 
+    height: 100%;
+    max-width: 90%;
+    object-fit: cover;
+    position: absolute;
+}
+.taguchi img:last-of-type{/* ホバー切り替え */
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+.taguchi:hover img{
+    opacity: 1;
+}
+/* メンバー */
+.mems{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:1rem;
+    width: 40%;
+    height: auto;
+    max-width: 90%;
+    margin: 0;
+}
+.person {
+    position: relative;
+    width: 100%; /* グリッドで割り当てられた幅 */
+    aspect-ratio: 3/4;
+    overflow: hidden;
+}
+
+.person img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.person img.back {
+    opacity: 0;
+}
+
+.person:hover img.front {
+    opacity: 0;
+}
+
+.person:hover img.back {
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out;
+    box-shadow: 1px 1px 12px #000000aa;
+}
+
+
+/* Contents */
+.contents{
+    margin-bottom: 6rem;
+}
+.links{
+    margin: 0 1rem;
+    border: #fff 2px solid;
+}
+.links a{
+    display: block;
+    text-align: center;
+    padding: .8rem;
+    border-bottom: #6C757D 2px solid;
+    transition: color 0.3s;
+}
+.links a:hover{
+    color: #6595BA;
+}
+
+
+/*Music
+===============================*/
+/*シングル*/
+.back.Mu{
+    background-image: url(../attach/musicback.jpg);
+}
+.box.single{
+    margin: 10rem 1rem;
+    padding: 1.5rem;
+}
+.box.single h2{
+    white-space: nowrap;
+}
+.box.single img{
+    width: 50%;
+    max-height: fit-content;
+}
+/*アルバム*/
+.box.album{
+    margin: auto 0;
+    margin-bottom: 10rem ;
+    display: flex;
+    flex-direction: column;
+    background-color: #d9d9d9;
+    height: 100%;
+    color: #000;
+}
+.box.album img{
+    max-width: 90%;
+}
+.box .album-jacket{
+    padding: 10% 0;
+}
+.box.album p{
+    margin-bottom: 5%;
+}
+
+
+/*Member
+===============================*/
+/*レイアウト設定*/
+.back.Me{
+    background-image: url(../attach/memberback.jpg);
+}
+.box.Member{
+    margin: 8rem 1rem;
+    padding: 1.5rem;
+}
+/*メンバー写真調整*/
+.box.Member img{
+    width: 50%;
+}
+.Shimamura div.texts{ 
+    margin-right: auto;
+}
+
+
+/* デスクトップ用のレスポンシブ対応 
+===============================*/
+@media (min-width: 1024px) {
+    /* 
+    共通部分 
+    ===============================*/
+    html,body{
+        overflow-x: hidden;
+    }
+    body{
+        font-size: 110%; /* デスクトップではフォントサイズを少し大きく */
+    }
+    /* 見出し */
+    .heading-large {
+        margin-top: 6rem; /* デスクトップでは余白を広げる */
+        margin-left: 2rem;
+        font-size: 2.5rem; /* 見出しを大きくする */
+    }
+
+    /* ハンバーガーメニュー非表示 */
+    nav.menu {
+        display: none;
+    }
+    /* ヘッダー編集 */
+    header{/* ヘッダー表示 */
+        display: block;
+        padding: 0 4rem;
+    }
+    div.h-inner{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    img.h-logo{/* ロゴ調整 */
+        max-width: 120px;
+        padding-top: .5rem;
+    }
+    .h-menu a{
+        display: inline-block;
+        margin: 0 2rem;
+        /* マウスホバー設定 */
+        position: relative;
+        transition: .3s;
+    }
+    .h-menu a:hover{
+        color: #6595BA;
+    }
+    .h-menu a::after {
+        position: absolute;
+        content: '';
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background: #6595BA;
+        transition: .3s;
+    }
+    .h-menu a:hover::after {
+        width: 100%;
+    }
+
+    /* フッター */
+    .f-menu{
+        margin: 3rem;
+    }
+    small {
+        font-size: 0.8rem; /* フッターの文字サイズを調整 */
+    }
+    
+    /*
+    TOP
+    ===============================*/
+    .video-wrap video{
+        transform: (-50%);
+        min-height: 100%;
+    }
+    h2.heading-large{
+        margin-left: 10rem;
+    }
+
+    /* NEWS */
+    .news-list{
+        margin-left: 10rem;
+    }
+    .news-item{
+        display: flex;
+        flex-direction: row;
+    }
+    p.day{
+        margin-right: 1rem;
+        font-size: 1rem;
+    }
+    .news-item li{
+       display: block;
+    }
+
+    /* ABOUT */
+    .about{
+        margin: 1px 10%;
+    }
+    img.logo{
+        max-width: 400px;
+    }
+    .about p{
+        width: 100%;
+        margin: 0;
+        font-size: 1rem;
+        text-align: center;
+    }
+    .about div{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 5rem 0;
+        gap: 2rem;
+    }
+    .top1 img{
+        width: 45%;
+        margin-left: 10%;
+    }
+    div .top2{
+        display: flex;
+        flex-direction: row-reverse;
+        padding: 0 15%;
+    }
+    .top2 img{
+        width: 50%;
+        max-width: 500px;
+    }
+    .top2 p{
+        text-align: left;
+    }
+    div .top3{
+        flex-direction: column;
+    }
+    .top3 img{
+        width: 50%;
+        max-width: 500px;
+    }
+    .top3 p{
+        text-align: left;
+        padding-left: 15%;
+    }
+
+    /* Music 
+    move.cssにて記載*/
+   
+    
+    /* Member */
+    .member h2{
+        font-size: 40px;
+    }
+    .member p{
+        margin-left: 10rem;
+        font-size: 16px;
+    }
+    .members {
+        flex-direction: row; /* デスクトップでは横並びにする */
+        gap: 2rem; /* 要素間の余白を追加 */
+    }
+    .taguchi{
+        width: 33.8%;
+        height: auto;
+    }
+    img.member-taguchi {
+        width: 100%;
+        height: 100%;
+    }
+    .mems {
+        grid-template-columns: repeat(2, 1fr); /* デスクトップでは4列にする */
+        width: 30%; /* 幅を広げる */
+        height: 30%;
+    }
+    .mems img{
+        width: 100%;
+        height: 100%;
+    }
+
+    /* コンテンツリンク */
+    .contents p{
+        font-size: 16px;
+        text-align: left;
+        margin-left: 10rem;
+    }
+    .links {
+        margin: 0 30%; /* デスクトップでは余白を広げる */
+    }
+    .links a {
+        font-size: 1rem; /* デスクトップでは文字を大きくする */
+        padding: 1rem; /* パディングを増やす */
+    }
+    
+    /*
+    紹介ページ共通部分
+    ===============================*/
+    div#text-back{
+        margin: 8rem auto;
+        
+    }
+    .back{
+        background-size: cover;   
+    }
+    .cover-about h2{
+        font-size: 3vw;
+    }
+    .texts{
+        justify-content: center;
+        margin-left: 4rem;
+        gap: 2rem;
+        width: 100%;
+        max-width: 800px;
+    }
+    .texts br{
+        display: block;
+    }
+    .box .texts h2{
+        margin-left: 50px;
+        font-size: 1.5rem;
+    }
+    /*リンクの間隔*/
+    div.prof-links{
+        justify-content: left;
+        gap: 25%;
+    }
+    .prof-links a {
+        position: relative;
+        display: inline-block;
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    .prof-links a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 2px;
+        background: #6595BA;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s;
+    }
+    .prof-links a:hover {
+        color: #6595BA;
+    }
+    .prof-links a:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+
+    /*
+    Music
+    ===============================*/
+    /*テキストのサイズ*/
+    .cover-about p,
+    .box.album p
+    {
+        margin: 5% 25%;
+        font-size: 100%;
+    }
+    /*テキストのレイアウト*/
+    .box.album p{
+        margin-left: 10%;
+        margin-top: 0;
+    }
+    /*コンテンツの配置*/
+    .box.single{
+        margin: 10rem;
+        max-width: 40%;
+    }
+    .box.single.b,
+    .box.single.d{
+        margin-left: 48%;
+    }
+    /*画像サイズ調整*/
+    .box.album img{
+        max-width: 100%;
+        transition: all .4s ease-in-out;
+    }
+    .box.album img:hover{
+        transform: scale(1.1,1.1);
+         box-shadow: 1px 1px 12px #000000ca;
+    }
+    
+
+    /*
+    Member
+    ===============================*/
+    .box.Member{
+        display: flex;
+        margin: 10rem auto;
+        max-width: 900px;
+    }
+    .box.Member div.texts{
+        margin-left: 20%;
+        width: 100%;
+    }
+    .box.Member img{
+        width: 40%;
+    }
+}
